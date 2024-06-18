@@ -1,9 +1,9 @@
 class Libassuan < Formula
   desc "Assuan IPC Library"
   homepage "https://www.gnupg.org/related_software/libassuan/"
-  url "https://gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.7.tar.bz2"
-  mirror "https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/libassuan/libassuan-2.5.7.tar.bz2"
-  sha256 "0103081ffc27838a2e50479153ca105e873d3d65d8a9593282e9c94c7e6afb76"
+  url "https://gnupg.org/ftp/gcrypt/libassuan/libassuan-3.0.1.tar.bz2"
+  mirror "https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/libassuan/libassuan-3.0.1.tar.bz2"
+  sha256 "c8f0f42e6103dea4b1a6a483cb556654e97302c7465308f58363778f95f194b1"
   license "GPL-3.0-only"
 
   livecheck do
@@ -24,6 +24,9 @@ class Libassuan < Formula
   depends_on "libgpg-error"
 
   def install
+    # Fixes duplicate symbols errors - https://lists.gnupg.org/pipermail/gnupg-devel/2024-July/035614.html
+    ENV.append_to_cflags "-std=gnu89"
+
     system "./configure", "--disable-dependency-tracking",
                           "--disable-silent-rules",
                           "--prefix=#{prefix}",
