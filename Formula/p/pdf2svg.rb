@@ -4,7 +4,7 @@ class Pdf2svg < Formula
   url "https://github.com/dawbarton/pdf2svg/archive/refs/tags/v0.2.3.tar.gz"
   sha256 "4fb186070b3e7d33a51821e3307dce57300a062570d028feccd4e628d50dea8a"
   license "GPL-2.0-or-later"
-  revision 6
+  revision 7
 
   bottle do
     sha256 cellar: :any,                 arm64_sonoma:   "c1ee5db9b628526a6a4cf4bee28826288ca7bb77cd5af8ddf96a24a91f952577"
