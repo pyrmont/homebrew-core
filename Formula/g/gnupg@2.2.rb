@@ -4,6 +4,7 @@ class GnupgAT22 < Formula
   url "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.43.tar.bz2"
   sha256 "a3b34c40f455d93054d33cf4cf2a8ce41149d499eca2fbb759619de04822d453"
   license "GPL-3.0-or-later"
+  revision 1
 
   livecheck do
     url "https://gnupg.org/ftp/gcrypt/gnupg/"
