@@ -4,6 +4,7 @@ class GnupgPkcs11Scd < Formula
   url "https://github.com/alonbl/gnupg-pkcs11-scd/releases/download/gnupg-pkcs11-scd-0.10.0/gnupg-pkcs11-scd-0.10.0.tar.bz2"
   sha256 "29bf29e7780f921c6d3a11f608e2b0483c1bb510c5afa8473090249dd57c5249"
   license "BSD-3-Clause"
+  revision 1
 
   livecheck do
     url :stable
@@ -28,7 +29,7 @@ class GnupgPkcs11Scd < Formula
   depends_on "automake" => :build
   depends_on "libtool" => :build
   depends_on "pkg-config" => :build
-  depends_on "libassuan"
+  depends_on "libassuan@2"
   depends_on "libgcrypt"
   depends_on "libgpg-error"
   depends_on "openssl@3"
@@ -38,7 +39,7 @@ class GnupgPkcs11Scd < Formula
     system "autoreconf", "-fiv"
     system "./configure", "--disable-dependency-tracking",
                           "--with-libgpg-error-prefix=#{Formula["libgpg-error"].opt_prefix}",
-                          "--with-libassuan-prefix=#{Formula["libassuan"].opt_prefix}",
+                          "--with-libassuan-prefix=#{Formula["libassuan@2"].opt_prefix}",
                           "--with-libgcrypt-prefix=#{Formula["libgcrypt"].opt_prefix}",
                           "--prefix=#{prefix}"
     system "make"
