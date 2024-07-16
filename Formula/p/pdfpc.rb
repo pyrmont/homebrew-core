@@ -2,6 +2,7 @@ class Pdfpc < Formula
   desc "Presenter console with multi-monitor support for PDF files"
   homepage "https://pdfpc.github.io/"
   license "GPL-3.0-or-later"
+  revision 1
   head "https://github.com/pdfpc/pdfpc.git", branch: "master"
 
   stable do
