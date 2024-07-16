@@ -4,6 +4,7 @@ class Virtualpg < Formula
   url "https://www.gaia-gis.it/gaia-sins/virtualpg-2.0.1.tar.gz"
   sha256 "be2aebeb8c9ff274382085f51d422e823858bca4f6bc2fa909816464c6a1e08b"
   license "MPL-1.1"
+  revision 1
 
   livecheck do
     url :homepage
