@@ -4,6 +4,7 @@ class Reprepro < Formula
   url "https://deb.debian.org/debian/pool/main/r/reprepro/reprepro_5.3.1.orig.tar.xz"
   sha256 "5a6d48bf1f60cfd3c32eae05b535b334972c1e9d4e62ed886dd54e040e9c1cda"
   license "GPL-2.0-only"
+  revision 1
 
   livecheck do
     url "https://deb.debian.org/debian/pool/main/r/reprepro/"
