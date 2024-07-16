@@ -1,7 +1,7 @@
 class Gpa < Formula
   desc "Graphical user interface for the GnuPG"
   homepage "https://www.gnupg.org/related_software/gpa/"
-  revision 3
+  revision 4
 
   stable do
     url "https://gnupg.org/ftp/gcrypt/gpa/gpa-0.10.0.tar.bz2"
@@ -39,6 +39,7 @@ class Gpa < Formula
   depends_on "gpgme"
 
   def install
+    inreplace "configure", "NEED_LIBASSUAN_API=2", "NEED_LIBASSUAN_API=3"
     system "./autogen.sh" if build.head?
     system "./configure", *std_configure_args, "--disable-silent-rules"
     system "make"
