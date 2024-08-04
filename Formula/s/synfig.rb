@@ -2,12 +2,11 @@ class Synfig < Formula
   desc "Command-line renderer"
   homepage "https://synfig.org/"
   license "GPL-3.0-or-later"
-  revision 6
 
   stable do
-    url "https://downloads.sourceforge.net/project/synfig/development/1.5.1/synfig-1.5.1.tar.gz"
-    mirror "https://github.com/synfig/synfig/releases/download/v1.5.1/synfig-1.5.1.tar.gz"
-    sha256 "aa91593c28a89f269be1be9c8bd9ecca6491f9e6af26744d1c160c6553ee2ced"
+    url "https://downloads.sourceforge.net/project/synfig/development/1.5.2/synfig-1.5.2.tar.gz"
+    mirror "https://github.com/synfig/synfig/releases/download/v1.5.2/synfig-1.5.2.tar.gz"
+    sha256 "0a7cff341eb0bcd31725996ad70c1461ce5ddb3c3ee9f899abeb4a3e77ab420e"
 
     # Apply upstream commit to fix build with ffmpeg:
     # https://github.com/synfig/synfig/commit/f684b24f0db31ab8ea7aadc417fc23e3084b4138
@@ -55,20 +54,31 @@ class Synfig < Formula
 
   uses_from_macos "perl" => :build
 
+  on_macos do
+    depends_on "fontconfig"
+    depends_on "fribidi"
+    depends_on "glib"
+    depends_on "glibmm@2.66"
+    depends_on "harfbuzz"
+    depends_on "imath"
+    depends_on "libmng"
+  end
+
   fails_with gcc: "5"
 
   def install
     ENV.prepend_path "PERL5LIB", Formula["intltool"].libexec/"lib/perl5" unless OS.mac?
+
     ENV.cxx11
 
     if build.head?
       cd "synfig-core"
       system "./bootstrap.sh"
     end
-    system "./configure", *std_configure_args,
-                          "--disable-silent-rules",
+    system "./configure", "--disable-silent-rules",
                           "--with-boost=#{Formula["boost"].opt_prefix}",
-                          "--without-jpeg"
+                          "--without-jpeg",
+                          *std_configure_args
     system "make", "install"
   end
 
