@@ -4,7 +4,7 @@ class Profanity < Formula
   url "https://profanity-im.github.io/tarballs/profanity-0.14.0.tar.gz"
   sha256 "fd23ffd38a31907974a680a3900c959e14d44e16f1fb7df2bdb7f6c67bd7cf7f"
   license "GPL-3.0-or-later"
-  revision 1
+  revision 2
 
   bottle do
     sha256 arm64_sonoma:   "785c5656009a9c7bafa360970213ae1ab6b4d10a29070aaca0c8888f471b31fe"
