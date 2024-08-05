@@ -43,6 +43,16 @@ class Mplayer < Formula
   uses_from_macos "libxml2"
 
   def install
+    # Work around build failure with newer Clang
+    if DevelopmentTools.clang_build_version >= 1500
+      ENV.append_to_cflags "-Wno-int-conversion -Wno-incompatible-function-pointer-types"
+    end
+
+    # Fix x86_64 detection used to apply a workaround.
+    # TODO: Remove on the next release as code was removed.
+    # Issue ref: https://trac.mplayerhq.hu/ticket/2383
+    inreplace "libvo/osx_objc_common.m", " defined(x86_64)", " defined(__x86_64__)" if build.stable?
+
     # we disable cdparanoia because homebrew's version is hacked to work on macOS
     # and mplayer doesn't expect the hacks we apply. So it chokes. Only relevant
     # if you have cdparanoia installed.
